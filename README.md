@@ -11,7 +11,7 @@
 - Backend: use `Java` to process logic request, and some supports are as below:
    * Built with both relational database and NoSQL database (`MySQL` and `MongoDB`) to support data storage from users and items searched in TicketMaster API
    * Design **content-based recommendation algorithm** for event recommendation
-- Deploy website server on `Amazon EC2`: [Event Recommendation System](http://52.24.237.51/EventRecommend/)
+- Deploy website server on `Amazon EC2`: 
 - Analyze website traffic both online and offline with ELK (`ElasticSearch`, `Logstash` and `Kibana`) and `MapReduce` in MongoDB
 
 ## Infrastructure Design
@@ -21,10 +21,10 @@
    * Logic tier: Java
 - Local and remote development environment
 
-![local environment](https://raw.githubusercontent.com/apollotong/TicketMasterPlus/tree/master/doc/local.png)
+![local environment](https://github.com/apollotong/TicketMasterPlus/blob/master/doc/local.png)
 > Local development environment
 
-![remote environment](https://raw.githubusercontent.com/apollotong/TicketMasterPlus/tree/master/doc/remote.png)
+![remote environment](https://github.com/apollotong/TicketMasterPlus/blob/master/doc/remote.png)
 > Remote development environment
 
 ## API Design
@@ -56,7 +56,7 @@
       * Set a new user into users table/collection in database
       * return response
 
-![APIs design](https://raw.githubusercontent.com/apollotong/TicketMasterPlus/tree/master/doc/APIs.png)
+![APIs design](https://github.com/apollotong/TicketMasterPlus/blob/master/doc/APIs.png)
 > APIs design in logic tier
 
 - TicketMasterAPI
@@ -65,7 +65,7 @@
    * **Content-based Recommendation**: find categories from item profile from a userâ€™s favorite, and recommend the similar items with same categories.
    * Present recommended items with ranking based on distance (geolocation of users)
 
-![recommendation algorithm](https://raw.githubusercontent.com/apollotong/TicketMasterPlus/tree/master/doc/recommendation.png)
+![recommendation algorithm](https://github.com/apollotong/TicketMasterPlus/blob/master/doc/recommendation.png)
 > Process of recommend request
 
 ## Database Design
@@ -97,11 +97,6 @@
 - Online (**ElasticSearch**, **Logstash**, **Kibana**)
    * Use Logstash to fetch log (in NoSQL-like form), then store data in ElasticSearch, finally use Kibana to analyze the data in ElasticSearch, getting some tables and graphs like APIs use, request status, geolocation of visitors, etc
 
-![ELK analysis](https://raw.githubusercontent.com/Wangxh329/EventRecommendation/master/img_font_icon_sources/doc/elk.png)
+![ELK analysis](https://github.com/apollotong/TicketMasterPlus/blob/master/doc/elk.png)
 > Remote development environment
 
-- Offline (**MapReduce in MongoDB**)
-   * Copy-paste some logs from Tomcat server
-   * Purify log data and store in MongoDB
-   * Do ``mapreduce()`` in MongoDB
-   * Get a list of timebucket-count in descending order of count, then find the peak time of website traffic
